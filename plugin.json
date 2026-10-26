@@ -1,0 +1,115 @@
+{
+  "tesserae_compat": "1.x",
+  "name": "Plexamp, Now Playing",
+  "version": "0.5.0",
+  "kind": "widget",
+  "description": "Album cover, album and artist for one Plexamp player (e.g. a headless Plexamp), read from Plex /status/sessions. When nothing is playing, shows a random album from your music library, stable per time bucket so battery panels don't repaint every wake.",
+  "icon": "ph-vinyl-record",
+  "requires": ["network:*", "settings:plugin"],
+  "settings": [
+    {
+      "name": "plex_url",
+      "type": "string",
+      "label": "Plex URL",
+      "default": "",
+      "help": "e.g. http://192.168.1.10:32400"
+    },
+    {
+      "name": "plex_token",
+      "type": "string",
+      "label": "Plex token",
+      "secret": true,
+      "default": "",
+      "help": "Server owner's X-Plex-Token (needed to see all sessions)"
+    }
+  ],
+  "supports": { "sizes": ["sm", "md", "lg"] },
+  "render": { "full_bleed": true },
+  "cell_options": [
+    {
+      "name": "layout",
+      "type": "select",
+      "label": "Layout",
+      "default": "full",
+      "help": "Cover-first layouts for grid dashboards. On a Panels canvas, the Part picker overrides this.",
+      "choices": [
+        { "value": "full", "label": "Cover left, text right" },
+        { "value": "poster", "label": "Poster: full-bleed cover, caption band" },
+        { "value": "gallery", "label": "Gallery: whole cover, small lines above/below" },
+        { "value": "overlay", "label": "Overlay: cover fills the panel, small caption bottom-right" }
+      ]
+    },
+    {
+      "name": "player",
+      "type": "string",
+      "label": "Player name contains",
+      "default": "caldera",
+      "help": "Matched against the Plexamp player's title / product / machine id. Blank = any music session."
+    },
+    {
+      "name": "include_paused",
+      "type": "boolean",
+      "label": "Keep showing the album while paused",
+      "default": true
+    },
+    {
+      "name": "show_track",
+      "type": "boolean",
+      "label": "Show track title",
+      "default": false,
+      "help": "Off = one repaint per album. On = one repaint per song (more battery)."
+    },
+    {
+      "name": "shelf_hours",
+      "type": "number",
+      "label": "Random cover changes every N hours",
+      "default": 6
+    },
+    {
+      "name": "section",
+      "type": "string",
+      "label": "Music library (name or id, blank = all)",
+      "default": ""
+    },
+    {
+      "name": "tone",
+      "type": "select",
+      "label": "Cover rendering",
+      "default": "color",
+      "choices": [
+        { "value": "color", "label": "Colour (let the panel palette dither it)" },
+        { "value": "mono", "label": "Greyscale, contrast-stretched" }
+      ]
+    }
+  ],
+  "fragments": [
+    { "id": "full", "label": "Cover + text", "w": 400, "h": 300, "icon": "ph-vinyl-record" },
+    { "id": "cover", "label": "Cover only", "w": 300, "h": 300, "icon": "ph-image" },
+    { "id": "poster", "label": "Poster: full-bleed cover, caption band", "w": 400, "h": 300, "icon": "ph-frame-corners" },
+    { "id": "gallery", "label": "Gallery: whole cover, small lines above/below", "w": 400, "h": 300, "icon": "ph-picture-in-picture" },
+    { "id": "overlay", "label": "Overlay: cover fills the panel, small caption bottom-right", "w": 400, "h": 300, "icon": "ph-image-square" }
+  ],
+  "data_schema": {
+    "fields": [
+      { "name": "mode", "type": "str", "label": "playing | shelf | empty" },
+      { "name": "state", "type": "str", "label": "Player state" },
+      { "name": "album", "type": "str", "label": "Album" },
+      { "name": "artist", "type": "str", "label": "Artist" },
+      { "name": "track", "type": "str", "label": "Track (blank unless enabled)" },
+      { "name": "year", "type": "num", "label": "Year" },
+      { "name": "player", "type": "str", "label": "Player" },
+      { "name": "art", "type": "str", "label": "Cover (data URI)" }
+    ],
+    "sample": {
+      "demo": true,
+      "mode": "playing",
+      "state": "playing",
+      "album": "Chromatic Rooms",
+      "artist": "The Paper Satellites",
+      "track": "",
+      "year": 2024,
+      "player": "caldera",
+      "art": null
+    }
+  }
+}
