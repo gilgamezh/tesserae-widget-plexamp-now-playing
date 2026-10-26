@@ -1,7 +1,11 @@
 # plexamp_now_playing
 
-Tesserae widget: cover, album and artist for one Plexamp player (matched by
-name, e.g. a headless Plexamp called `caldera`), read straight from Plex
+![full layout](screenshots/full.png)
+
+Tesserae widget: cover, album and artist for one
+[Plexamp](https://www.plex.tv/plexamp/) player (matched by name, e.g. a
+headless [Caldera](https://caldera.homes/music/) player called `caldera`),
+read straight from Plex
 `/status/sessions`. No Home Assistant needed. When nothing is playing it shows
 a random album from the music library ("From the shelf").
 
@@ -70,8 +74,3 @@ to noise on a few-ink panel.
 | `shelf_hours` | 6 | how often the idle cover rotates |
 | `section` | all | music library name or id |
 | `tone` | color | `mono` = greyscale + autocontrast before quantising |
-
-Tests: `python -m pytest tests` (offline, fake Plex).
-
-AGPL-3.0-or-later, see `LICENSE` (derived from
-[tesserae-widget-plex-recently-added](https://github.com/dmellok/tesserae-widget-plex-recently-added)).

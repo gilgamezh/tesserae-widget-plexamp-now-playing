@@ -1,7 +1,7 @@
 {
   "tesserae_compat": "1.x",
   "name": "Plexamp, Now Playing",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "kind": "widget",
   "description": "Album cover, album and artist for one Plexamp player (e.g. a headless Plexamp), read from Plex /status/sessions. When nothing is playing, shows a random album from your music library, stable per time bucket so battery panels don't repaint every wake.",
   "icon": "ph-vinyl-record",
