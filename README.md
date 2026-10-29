@@ -68,9 +68,14 @@ to noise on a few-ink panel.
 | Option | Default | |
 |---|---|---|
 | `layout` | full | `full` / `poster` / `gallery` / `overlay` (grid dashboards) |
-| `player` | `caldera` | substring of Player title/product/machine id; blank = any |
+| `player` | blank | substring of Player title/product/machine id; blank = any |
 | `include_paused` | true | keep the album up while paused |
 | `show_track` | false | adds the track line (more repaints) |
 | `shelf_hours` | 6 | how often the idle cover rotates |
 | `section` | all | music library name or id |
 | `tone` | color | `mono` = greyscale + autocontrast before quantising |
+
+## Credits
+
+Derived from [plex_recently_added](https://github.com/dmellok/tesserae-widget-plex-recently-added)
+(AGPL-3.0).

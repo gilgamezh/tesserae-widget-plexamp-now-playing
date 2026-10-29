@@ -1,7 +1,7 @@
 {
   "tesserae_compat": "1.x",
   "name": "Plexamp, Now Playing",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "kind": "widget",
   "description": "Album cover, album and artist for one Plexamp player (e.g. a headless Plexamp), read from Plex /status/sessions. When nothing is playing, shows a random album from your music library, stable per time bucket so battery panels don't repaint every wake.",
   "icon": "ph-vinyl-record",
@@ -43,7 +43,7 @@
       "name": "player",
       "type": "string",
       "label": "Player name contains",
-      "default": "caldera",
+      "default": "",
       "help": "Matched against the Plexamp player's title / product / machine id. Blank = any music session."
     },
     {
